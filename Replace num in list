@@ -1,0 +1,15 @@
+def replacenum():
+  num=int(input("Enter the number you want to replace : "))
+  replace_num=int(input("Enter number you want to replace with : "))
+  for i in range(n):
+    if list1[i] == num:
+       list1[i] =replace_num
+    print(list1[i],end=" ")
+list1=[1,2,3,1,5,9,8,1,1]
+n=len(list1)
+replacenum()
+
+# Output:
+# Enter the number you want to replace : 1
+# Enter number you want to replace with : 6
+# 6 2 3 6 5 9 8 6 6 
