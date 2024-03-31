@@ -53,15 +53,15 @@ def victory_for(board, sign):
         print(sign," is the winner ")
         
         
-def draw_move(board):
-    comp_move=''
-    comp_move==randrange(board)
-    for row in range(3):
-        for col in range(3):
-            if board[row][col] in free_fields:
-                comp_move=computer
-            print(computer)
-draw_move(board)    
+# def draw_move(board):
+#     comp_move=''
+#     comp_move==randrange(board)
+#     for row in range(3):
+#         for col in range(3):
+#             if board[row][col] in free_fields:
+#                 comp_move=computer
+#             print(computer)
+# draw_move(board)    
 
 
 user_move="O"
