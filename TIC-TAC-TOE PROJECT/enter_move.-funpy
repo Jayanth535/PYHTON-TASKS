@@ -1,8 +1,0 @@
-def enter_move(board):
-    choice=input("Enter your move: ")
-    for row in range(3):
-        for col in range(3):
-            if board[row][col]==choice:
-                board[row][col]="O"
-board=[['1','2','3'],['4','X','6'],['7','8','9']]
-enter_move(board)  
