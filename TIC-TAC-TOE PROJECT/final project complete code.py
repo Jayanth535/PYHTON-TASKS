@@ -12,11 +12,15 @@ board=[['1','2','3'],['4','X','6'],['7','8','9']]
 display_board(board)
 
 def enter_move(board):
-    choice=input("Enter your move: ")
-    for row in range(3):
-        for col in range(3):
-            if board[row][col]==choice:
-                board[row][col]="O"
+    while True:
+        choice=input("Enter your move: ")
+        if choice <1 and choice >9:
+            print("ENter the valid input betwen the range of 1- 9")
+            continue
+        for row in range(3):
+            for col in range(3):
+                if board[row][col]==choice:
+                    board[row][col]="O"
 enter_move(board)  
 display_board(board)   
         
@@ -53,19 +57,11 @@ def victory_for(board, sign):
         print(sign," is the winner ")
         
         
-# def draw_move(board):
-#     comp_move=''
-#     comp_move==randrange(board)
-#     for row in range(3):
-#         for col in range(3):
-#             if board[row][col] in free_fields:
-#                 comp_move=computer
-#             print(computer)
-# draw_move(board)    
-
-
-user_move="O"
-computer="X"
-display_board(board)
-victory_for(board, user_move)
-victory_for(board, computer)
+def draw_move(board):
+    free=make_list_of_free_fields(board)
+    counter=len(free)
+    if counter > 0:
+        it=randrange(counter)
+        row,col=free[it]
+        board[row][col]= "X"
+draw_move(board)
