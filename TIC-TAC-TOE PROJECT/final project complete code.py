@@ -8,21 +8,25 @@ def display_board(board):
     print(' +-------+-------+-------+\n','|       |       |       |\n',
           '|   ' +board[2][0]+    '   |   ' +board[2][1] +   '   |   ' +board[2][2] +   '   |\n','|       |       |       |',)
     print(' +-------+-------+-------+')
-board=[['1','2','3'],['4','X','6'],['7','8','9']]
-display_board(board)
 
 def enter_move(board):
-    while True:
-        choice=input("Enter your move: ")
-        if choice <1 and choice >9:
-            print("ENter the valid input betwen the range of 1- 9")
+    ok = False
+    while not ok:
+        move=input("enter your move:")
+        ok=len(move)==1 and move>="1" and move<="9"
+        if not ok:
+            print("bad input")
             continue
-        for row in range(3):
-            for col in range(3):
-                if board[row][col]==choice:
-                    board[row][col]="O"
-enter_move(board)  
-display_board(board)   
+        move=int(move)-1
+        row=move//3
+        col=move%3
+        sign=board[row][col]
+        print(sign)
+        ok=sign not in ["X","O"] 
+        if not ok:
+            print("It is occupied repeat your input")
+            continue
+    board[row][col]="O" 
         
 def make_list_of_free_fields(board):
     global free_fields
@@ -31,7 +35,7 @@ def make_list_of_free_fields(board):
         for col in range(3):
             if board[row][col] !='O' and  board[row][col]!='X':
                 free_fields.append([[row],[col]])
-make_list_of_free_fields(board)
+    return free_fields
 def victory_for(board, sign):
         #for rows
 
@@ -60,8 +64,18 @@ def victory_for(board, sign):
 def draw_move(board):
     free=make_list_of_free_fields(board)
     counter=len(free)
+    print(counter)
     if counter > 0:
         it=randrange(counter)
-        row,col=free[it]
-        board[row][col]= "X"
+        row_col=free[it]
+        print(row_col)
+        # board[row][col]= "X"
+
+board=[['1','2','3'],['4','X','6'],['7','8','9']]
+sign="X"
+sign="O"
+display_board(board)
+enter_move(board)  
+display_board(board)
+victory_for(board,sign)   
 draw_move(board)
