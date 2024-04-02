@@ -10,10 +10,11 @@ def display_board(board):
     print(' +-------+-------+-------+')
 
 def enter_move(board):
+    board[1][1]="X"
     ok = False
     while not ok:
         move=input("enter your move:")
-        ok=len(move)==1 and move>="1" and move<="9"
+        ok=len(move)==1 and  move>="1" and move<="9"
         if not ok:
             print("bad input")
             continue
@@ -21,10 +22,9 @@ def enter_move(board):
         row=move//3
         col=move%3
         sign=board[row][col]
-        print(sign)
         ok=sign not in ["X","O"] 
         if not ok:
-            print("It is occupied repeat your input")
+            print(move ,"is already occupied repeat your input")
             continue
     board[row][col]="O" 
         
@@ -67,15 +67,8 @@ def draw_move(board):
     print(counter)
     if counter > 0:
         it=randrange(counter)
-        row_col=free[it]
-        print(row_col)
-        # board[row][col]= "X"
-
-board=[['1','2','3'],['4','X','6'],['7','8','9']]
-sign="X"
-sign="O"
-display_board(board)
-enter_move(board)  
-display_board(board)
-victory_for(board,sign)   
+        row,col=free[it]
+        board[row][col]= "X"
+        print(row,col)
+board=[ [3 * j + i + 1 for i in range(3)] for j in range(3)]
 draw_move(board)
